@@ -14,3 +14,14 @@
 	text-align: center;
 	float: left;
 }
+.detail-itme{
+	border: 1px solid #e1e1e8;
+	padding: 20px;
+	background: #fff;
+}
+.dl-horizontal dt {
+	width: 90px;
+}
+.dl-horizontal dd {
+	margin-left: 120px;
+}

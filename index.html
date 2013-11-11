@@ -9,6 +9,7 @@
 	
 	<script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
 	<script src="http://cdn.bootcss.com/twitter-bootstrap/3.0.1/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/chart.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
 			$('.yc-contr').tooltip();
@@ -32,6 +33,9 @@
 
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
 			<div class="btn-group-vertical">
+				<a href="index.html" class="btn btn-default yc-contr" data-toggle="tooltip" data-placement="right" title="" data-original-title="仪表盘">
+					<i class="fa fa-dashboard fa-3x"></i>
+				</a>
 				<a href="storage.html" class="btn btn-default yc-contr" data-toggle="tooltip" data-placement="right" title="" data-original-title="存储">
 					<i class="fa fa-hdd-o fa-3x"></i>
 				</a>
@@ -42,22 +46,113 @@
 				<a href="users.html" class="btn btn-default yc-contr" data-toggle="tooltip" data-placement="right" title="" data-original-title="用户">
 					<i class="fa fa-users fa-3x"></i>
 				</a>
-				<a href="system.html" class="btn btn-default yc-contr" data-toggle="tooltip" data-placement="right" title="" data-original-title="系统">
+				<a href="system.html" class="btn btn-default yc-contr" data-toggle="tooltip" data-placement="right" title="" data-original-title="配置">
 					<i class="fa fa-wrench fa-3x"></i>
 				</a>
 			</div>
 		</div>
 
 		<div class="col-xs-11 col-sm-11 col-md-11 col-lg-11">
-			<div class="panel panel-primary">
+			
 				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-					asdfsdf
+					<div class="detail-itme">
+						<div class="title">运行状态</div>
+						<dl class="dl-horizontal">
+							<dt>机器名</dt>
+							<dd>beida-001</dd>
+							<dt>运行状态</dt>
+							<dd>正常</dd>
+							<dt>安全运行时间</dt>
+							<dd>70 小时</dd>
+						</dl>
+					</div>
+
+					<div class="detail-itme">
+						<div class="title">网络控制</div>
+						<dl class="dl-horizontal">
+							<dt>网卡</dt>
+							<dd>em0</dd>
+							<dt>运行状态</dt>
+							<dd>正常</dd>
+							<dt>已发送</dt>
+							<dd>12345 bytes</dd>
+							<dt>已接收</dt>
+							<dd>98765 bytes</dd>
+						</dl>
+					</div>
+
 				</div>
+
+				<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+					<div class="panel panel-default">
+						  <div class="panel-heading">
+								<h3 class="panel-title">机器运行监控</h3>
+						  </div>
+						  <div class="panel-body">
+								<div class="charts">
+									<div class="chart">
+										<h3>CPU</h3>
+
+										<span class="tips" title="最近1小时,每隔10秒自动刷新">实时数据</span>
+										<div class="labels">
+											单位：
+											<span class="unit">百分比 (%)</span>
+											<span class="step">间隔：5分钟</span>
+											<span class="cpu"></span>
+											使用率
+										</div>
+
+										<canvas id="canvas" height="240" width="600"></canvas>
+									</div>
+
+									<div class="chart">
+										<h3>内存</h3>
+										<span class="tips" title="最近1小时,每隔10秒自动刷新">实时数据</span>
+										<div class="labels">
+											单位：
+											<span class="unit">百分比 (%)</span>
+											<span class="step">间隔：5分钟</span>
+											<span class="cpu"></span>
+											使用率
+										</div>
+
+										<canvas id="canvas" height="240" width="600"></canvas>
+									</div>
+
+								</div>
+						  </div>
+					</div>
 				</div>
-			</div>
+			
 		</div>
 
 	</div>
+<script>
+
+		var lineChartData = {
+			labels : ["January","February","March","April","May","June","July"],
+			datasets : [
+				{
+					fillColor : "rgba(220,220,220,0.5)",
+					strokeColor : "rgba(220,220,220,1)",
+					pointColor : "rgba(220,220,220,1)",
+					pointStrokeColor : "#fff",
+					data : [65,59,90,81,56,55,40]
+				},
+				{
+					fillColor : "rgba(151,187,205,0.5)",
+					strokeColor : "rgba(151,187,205,1)",
+					pointColor : "rgba(151,187,205,1)",
+					pointStrokeColor : "#fff",
+					data : [28,48,40,19,96,27,100]
+				}
+			]
+			
+		}
+
+	var myLine = new Chart(document.getElementById("canvas").getContext("2d")).Line(lineChartData);
 	
+	</script>
+
 </body>
 </html>
